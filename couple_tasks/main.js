@@ -43,15 +43,28 @@ function getPrizeItem({name, src}) {
   const el = document.createElement('div')
   const tpl = `
     <div class="prize-item">
-      <div class="prize-item__name">${name}</div>
-      <div class="prize-item__img">
-        <img src="${src}" alt="">
-      </div>
+      <div class="prize-item__name" style="visibility:hidden;">${name}</div>
+    </div>
+  `
+  // <div class="prize-item__img">
+  //   <img src="${src}" alt="" style="visibility:hidden;">
+  // </div>
+  
+  el.innerHTML = tpl
+  return el.firstElementChild
+}
+
+function fillTitle({num}) {
+  const container = document.querySelector('#title');
+  const el = document.createElement('div')
+  const tpl = `
+    <div align='center' style='margin-top: 20px;'>
+      <p>现在，这里共有${num}件任务</p>
+      <p>抽一件试试吧</p>
     </div>
   `
   el.innerHTML = tpl
-
-  return el.firstElementChild
+  container.appendChild(el.firstElementChild)
 }
 
 function fillPrize() {
@@ -109,6 +122,8 @@ function bindEvent() {
 
 function init() {
   drawPanel()
+  console.log(prizeNum)
+  fillTitle({'num': prizeNum})
   fillPrize()
   bindEvent()
 }
