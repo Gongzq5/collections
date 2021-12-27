@@ -59,7 +59,7 @@ function fillTitle({num}) {
   const el = document.createElement('div')
   const tpl = `
     <div align='center' style='margin-top: 20px;'>
-      <p>现在，这里共有${num}件任务</p>
+      <p>现在，这里共有 <u>${num}</u> 件任务</p>
       <p>抽一件试试吧</p>
     </div>
   `
